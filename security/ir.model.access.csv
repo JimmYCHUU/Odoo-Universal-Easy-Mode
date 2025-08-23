@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_easy_mode_config_system,easy.mode.config.system,model_easy_mode_config,base.group_system,1,1,1,1
+access_easy_mode_model_config_system,easy.mode.model.config.system,model_easy_mode_model_config,base.group_system,1,1,1,1
+access_easy_mode_field_override_system,easy.mode.field.override.system,model_easy_mode_field_override,base.group_system,1,1,1,1
+access_easy_mode_toggler_user,easy.mode.toggler.user,model_easy_mode_toggler,base.group_user,1,1,1,1
+access_easy_mode_validator_system,easy.mode.validator.system,model_easy_mode_validator,base.group_system,1,1,1,1
+access_easy_mode_config_user,easy.mode.config.user,model_easy_mode_config,base.group_user,1,0,0,0
+access_easy_mode_model_config_user,easy.mode.model.config.user,model_easy_mode_model_config,base.group_user,1,0,0,0
+access_easy_mode_field_override_user,easy.mode.field.override.user,model_easy_mode_field_override,base.group_user,1,0,0,0

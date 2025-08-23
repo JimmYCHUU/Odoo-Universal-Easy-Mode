@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- Demo Configuration -->
+        <record id="demo_easy_mode_config" model="easy.mode.config">
+            <field name="name">Demo Easy Mode Configuration</field>
+            <field name="active">True</field>
+        </record>
+
+        <!-- Demo - Enable Contacts Module -->
+        <record id="demo_enable_contacts" model="ir.module.module" ref="base.module_base">
+            <field name="demo" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

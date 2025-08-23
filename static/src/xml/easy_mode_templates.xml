@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="universal_easy_mode.SystrayToggle" owl="1">
+        <div class="o_systray_easy_mode_toggle">
+            <button class="btn btn-sm btn-outline-primary" 
+                    t-on-click="onToggleClick"
+                    title="Toggle Easy Mode">
+                <i class="fa fa-magic" role="img" aria-label="Easy Mode"/>
+                <span class="d-none d-sm-inline ms-1">Easy Mode</span>
+            </button>
+        </div>
+    </t>
+</templates>

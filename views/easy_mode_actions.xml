@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Easy Mode Toggle Action -->
+    <record id="action_toggle_easy_mode" model="ir.actions.server">
+        <field name="name">Toggle Easy Mode</field>
+        <field name="model_id" ref="base.model_ir_actions_server"/>
+        <field name="binding_model_id" ref="base.model_ir_actions_server"/>
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+# Get the model from context or active model
+model_name = context.get('active_model')
+if model_name:
+    action = env['easy.mode.toggler'].toggle_easy_mode(model_name)
+else:
+    raise UserError('No model context found for Easy Mode toggle')
+        </field>
+    </record>
+
+    <!-- Easy Mode Toggle Server Action for any model -->
+    <record id="ir_actions_server_easy_mode_toggle" model="ir.actions.server">
+        <field name="name">Toggle Easy Mode</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="base.model_ir_ui_view"/>
+        <field name="state">code</field>
+        <field name="code">
+model_name = context.get('params', {}).get('model')
+if not model_name:
+    model_name = context.get('active_model')
+
+if model_name:
+    toggler = env['easy.mode.toggler']
+    if toggler.is_easy_mode_available(model_name):
+        result = toggler.toggle_easy_mode(model_name)
+        # Reload current page
+        action = {
+            'type': 'ir.actions.client',
+            'tag': 'reload'
+        }
+    else:
+        action = {
+            'type': 'ir.actions.client',
+            'tag': 'display_notification',
+            'params': {
+                'title': 'Easy Mode',
+                'message': 'Easy Mode not available for this model',
+                'type': 'warning'
+            }
+        }
+else:
+    action = {
+        'type': 'ir.actions.client',
+        'tag': 'display_notification',
+        'params': {
+            'title': 'Error',
+            'message': 'No model context found',
+            'type': 'danger'
+        }
+    }
+        </field>
+    </record>
+
+    <!-- Model Configuration Action -->
+    <record id="action_easy_mode_model_config" model="ir.actions.act_window">
+        <field name="name">Model Configuration</field>
+        <field name="res_model">easy.mode.model.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No model configurations found!
+            </p>
+            <p>
+                Go to Easy Mode Configuration first and click "1. Refresh Models" to detect available models.
+            </p>
+        </field>
+    </record>
+
+</odoo>

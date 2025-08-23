@@ -1,0 +1,143 @@
+/* Easy Mode Toggle Styles */
+
+.o_systray_easy_mode_toggle {
+    margin-right: 8px;
+}
+
+.o_systray_easy_mode_toggle .btn {
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 4px 8px;
+    transition: all 0.2s ease;
+}
+
+.o_systray_easy_mode_toggle .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.o_systray_easy_mode_toggle .btn.btn-outline-primary:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.o_systray_easy_mode_toggle .fa-magic {
+    color: #6f42c1;
+}
+
+/* Easy Mode indicators */
+.o_easy_mode_active .o_content {
+    border-left: 3px solid #28a745;
+    padding-left: 12px;
+}
+
+.o_easy_mode_active .o_cp_top {
+    background: linear-gradient(90deg, #28a74510 0%, transparent 100%);
+}
+
+/* Easy Mode field styling */
+.o_easy_mode_active .o_field_widget {
+    position: relative;
+}
+
+.o_easy_mode_active .o_field_widget:before {
+    content: "📱";
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.3;
+    font-size: 10px;
+    display: none; /* Hidden by default, can be enabled for debugging */
+}
+
+/* Toggle button in control panel */
+.o_cp_buttons .o_easy_mode_toggle {
+    margin-left: 8px;
+}
+
+.o_cp_buttons .o_easy_mode_toggle.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.o_cp_buttons .o_easy_mode_toggle.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+
+.o_cp_buttons .o_easy_mode_toggle:hover {
+    opacity: 0.85;
+}
+
+/* Easy Mode form styling */
+.o_easy_mode_form .o_form_sheet {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+}
+
+.o_easy_mode_form .oe_title h1 input {
+    font-size: 24px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.o_easy_mode_form .o_group .o_form_label {
+    font-weight: 500;
+    color: #6c757d;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .o_systray_easy_mode_toggle .d-none.d-sm-inline {
+        display: none !important;
+    }
+    
+    .o_systray_easy_mode_toggle .btn {
+        padding: 4px 6px;
+        font-size: 11px;
+    }
+}
+
+/* Animation for mode switching */
+@keyframes easy_mode_switch {
+    0% { opacity: 0.5; transform: scale(0.95); }
+    50% { opacity: 0.3; transform: scale(0.98); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.o_easy_mode_switching {
+    animation: easy_mode_switch 0.5s ease-in-out;
+}
+
+/* Notification styling */
+.o_notification.o_easy_mode {
+    border-left: 4px solid #28a745;
+}
+
+.o_notification.o_easy_mode .o_notification_title:before {
+    content: "📱 ";
+}
+
+/* Easy Mode badge in views */
+.o_easy_mode_badge {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.o_easy_mode_badge:hover {
+    opacity: 1;
+}

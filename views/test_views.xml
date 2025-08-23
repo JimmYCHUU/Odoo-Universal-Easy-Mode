@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Simple test view to verify module is loading -->
+    <record id="action_test_easy_mode" model="ir.actions.act_window">
+        <field name="name">Test Easy Mode</field>
+        <field name="res_model">easy.mode.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Welcome to Universal Easy Mode!
+            </p>
+            <p>
+                This is a test view to verify the module is working properly.
+                If you can see this, the module loaded successfully.
+            </p>
+        </field>
+    </record>
+
+    <!-- Test menu item -->
+    <menuitem id="menu_test_easy_mode"
+              name="Test Easy Mode"
+              action="action_test_easy_mode"
+              parent="menu_easy_mode_root"
+              sequence="99"/>
+</odoo>

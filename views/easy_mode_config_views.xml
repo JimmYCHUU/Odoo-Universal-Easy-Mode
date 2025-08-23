@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- Easy Mode Configuration Form View -->
+    <record id="view_easy_mode_config_form" model="ir.ui.view">
+        <field name="name">easy.mode.config.form</field>
+        <field name="model">easy.mode.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_refresh_models" 
+                            string="1. Refresh Models" 
+                            type="object" 
+                            class="btn-primary"
+                            help="Detect models from selected modules"/>
+                    <button name="action_generate_easy_views" 
+                            string="2. Generate Easy Views" 
+                            type="object" 
+                            class="btn-success"
+                            help="Generate Easy Mode views for enabled models"/>
+                    <button name="action_view_generated_views" 
+                            string="View Generated Views" 
+                            type="object" 
+                            class="btn-secondary"/>
+                    <button name="action_debug_models" 
+                            string="Debug &amp; Test" 
+                            type="object" 
+                            class="btn-warning"
+                            help="Show available models, create test configs, and cleanup invalid records"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Configuration Name"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <group>
+                            <field name="active"/>
+                            <field name="last_refresh"/>
+                        </group>
+                        <group>
+                            <field name="view_count"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Module Selection" name="modules">
+                            <field name="enabled_module_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="shortdesc"/>
+                                    <field name="state"/>
+                                    <field name="category_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        
+                        <page string="Model Configuration" name="models">
+                            <field name="enabled_model_ids">
+                                <tree editable="bottom">
+                                    <field name="enabled" widget="boolean_toggle"/>
+                                    <field name="model_name"/>
+                                    <field name="model"/>
+                                    <button name="action_configure_fields" 
+                                            string="Configure Fields" 
+                                            type="object" 
+                                            icon="fa-cogs"
+                                            class="btn-link"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Easy Mode Configuration Tree View -->
+    <record id="view_easy_mode_config_tree" model="ir.ui.view">
+        <field name="name">easy.mode.config.tree</field>
+        <field name="model">easy.mode.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="active" widget="boolean_toggle"/>
+                <field name="last_refresh"/>
+                <field name="view_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Easy Mode Configuration Action -->
+    <record id="action_easy_mode_config" model="ir.actions.act_window">
+        <field name="name">Easy Mode Configuration</field>
+        <field name="res_model">easy.mode.config</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Easy Mode configuration!
+            </p>
+            <p>
+                Configure which modules should have simplified Easy Mode interfaces.
+                Select modules, configure field visibility, and generate simplified views.
+            </p>
+        </field>
+    </record>
+
+    <!-- Field Override Configuration Tree View -->
+    <record id="view_easy_mode_field_override_tree" model="ir.ui.view">
+        <field name="name">easy.mode.field.override.tree</field>
+        <field name="model">easy.mode.field.override</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="field_name"/>
+                <field name="field_string"/>
+                <field name="field_type"/>
+                <field name="is_basic" widget="boolean_toggle"/>
+                <field name="is_required" readonly="1"/>
+                <field name="is_readonly" readonly="1"/>
+                <field name="has_groups" readonly="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Field Override Configuration Form View -->
+    <record id="view_easy_mode_field_override_form" model="ir.ui.view">
+        <field name="name">easy.mode.field.override.form</field>
+        <field name="model">easy.mode.field.override</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="field_name"/>
+                            <field name="field_string"/>
+                            <field name="field_type"/>
+                        </group>
+                        <group>
+                            <field name="is_basic"/>
+                            <field name="is_required"/>
+                            <field name="is_readonly"/>
+                            <field name="has_groups"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Field Override Action -->
+    <record id="action_easy_mode_field_override" model="ir.actions.act_window">
+        <field name="name">Field Configuration</field>
+        <field name="res_model">easy.mode.field.override</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'create': False, 'delete': False}</field>
+    </record>
+
+    <!-- Model Configuration Tree View -->
+    <record id="view_easy_mode_model_config_tree" model="ir.ui.view">
+        <field name="name">easy.mode.model.config.tree</field>
+        <field name="model">easy.mode.model.config</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="enabled" widget="boolean_toggle"/>
+                <field name="model_name"/>
+                <field name="model"/>
+                <button name="action_configure_fields" 
+                        string="Configure Fields" 
+                        type="object" 
+                        icon="fa-cogs"
+                        title="Configure field visibility"/>
+                <button name="action_visual_editor" 
+                        string="Visual Editor" 
+                        type="object" 
+                        icon="fa-paint-brush"
+                        title="Open drag-and-drop visual editor"
+                        class="btn-success"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Model Configuration Form View -->
+    <record id="view_easy_mode_model_config_form" model="ir.ui.view">
+        <field name="name">easy.mode.model.config.form</field>
+        <field name="model">easy.mode.model.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_configure_fields" 
+                            string="Configure Fields" 
+                            type="object" 
+                            class="btn-primary"
+                            icon="fa-cogs"/>
+                    <button name="action_visual_editor" 
+                            string="Visual Editor" 
+                            type="object" 
+                            class="btn-success"
+                            icon="fa-paint-brush"
+                            help="Open drag-and-drop visual form editor"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="model_name"/>
+                            <field name="model"/>
+                            <field name="enabled"/>
+                        </group>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Field Overrides" name="fields">
+                            <field name="field_override_ids" readonly="1">
+                                <tree>
+                                    <field name="field_name"/>
+                                    <field name="field_string"/>
+                                    <field name="field_type"/>
+                                    <field name="is_basic" widget="boolean_toggle"/>
+                                </tree>
+                            </field>
+                        </page>
+                        
+                        <page string="Generated Views" name="views">
+                            <field name="easy_view_ids" readonly="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="type"/>
+                                    <field name="priority"/>
+                                    <field name="active" widget="boolean_toggle"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
