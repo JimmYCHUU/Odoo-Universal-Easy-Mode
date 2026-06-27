@@ -622,3 +622,7 @@ universal_easy_mode/
 - **Security Issues**: Contact maintainers directly via email
 
 **Made with ❤️ for the Odoo Community - Simplifying Complex Workflows Since 2024**
+
+## About
+
+🎯 Universal Easy Mode for Odoo 17 — A lightweight module that dynamically generates simplified views for any model, allowing admins to configure which fields appear in Easy Mode. Users can switch between Easy Mode and Full Mode with a single click, making Odoo more accessible to end users while maintaining full functionality.
